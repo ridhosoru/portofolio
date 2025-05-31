@@ -1,42 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-inter: 'Inter', sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+
+@layer utilities {
+  .buttonD {
+    @apply relative w-[110px] h-[25px] mt-2 text-[15px] font-inter text-[#FA812F] rounded-sm outline outline-2 outline-[#FA812F] hover:text-white z-[0];
+  }
+
+  .buttonC {
+    @apply relative w-[40px] h-[25px] items-center font-inter flex justify-center mt-2 text-[15px]  text-[#FA812F] rounded-sm outline outline-2 outline-[#FA812F] hover:text-white z-[0];
   }
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+/* Pseudo-element pakai CSS biasa */
+.buttonD::after,
+.buttonC::after {
+  content: '';
+  position: absolute;
+  background-color: #FA812F;
+  height: 25px;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  border-radius: 0.125rem;
+  z-index: -1;
+  transition: width 0.2s;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+.buttonD:hover::after,
+.buttonC:hover::after {
+  width: 100%;
 }
