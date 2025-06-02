@@ -2,11 +2,13 @@
 import { motion } from "framer-motion";
 import React, { useState,useEffect, act } from 'react';
 import { FaPython,FaJs,FaReact,FaRaspberryPi,FaArrowRight,FaLinkedin,FaGithub,FaInstagram  } from "react-icons/fa";
+import Profile from "./components/Profile";
+import Form from "./components/Form";
 
 export default function Home(){
     const [contact,setContact] = useState(false);
     const [repos, setRepos] = useState([]);
-    const [even,setEvent] = useState([]);
+    const [even,setEven] = useState([]);
     const [activity,setActivity] =useState([]);
     const [loading,setLoading] = useState(false);
     const [actloading,setactLoading] = useState(false);
@@ -25,15 +27,15 @@ export default function Home(){
     }, []);
 
     useEffect(()=>{
-        const fetchRepos = async ()=>{
+        const fetchEven = async ()=>{
             setactLoading(true)
             const res = await fetch('/api/githubactivity');
             const data = await res.json();
             console.log(data);
-            setEvent(data);
+            setEven(data);
             setactLoading(false)
         };
-        fetchRepos();
+        fetchEven();
     }, []);
     
 
@@ -41,10 +43,11 @@ export default function Home(){
         if (even.length === 0) return;
         const newActivity = [];
         const data = even[0];
-        
         const {type,repo,created_at} = data;
-        const repoName = data.repo.name;
-        const createdAt = data.created_at;
+        if (!data) return;
+        const repoName = repo.name;
+        const createdAt = created_at;
+        
         
         if(type === 'PushEvent'){
             
@@ -59,6 +62,9 @@ export default function Home(){
             })
         }
         else{
+            
+            const repoName = data.repo.name;
+            const createdAt = data.created_at;
             newActivity.push({
                 name: repoName,
                 activity: created_at,
@@ -69,20 +75,6 @@ export default function Home(){
         setActivity(newActivity);
     
     },[even])
-    
-    
-
-
-
-    // useEffect(()=>{
-    //     const fetchAct = async()=>{
-    //         const res = await fetch(repos.commits_url.replace('{/sha}', ''));
-    //         const data = await res.json();
-    //         console.log(data['commit']);
-    //     };
-    //     fetchAct();
-
-    // })
 
     let DateUpdate = "Unknown Date";
     if (repos.updated_at && typeof repos.updated_at === 'string') {
@@ -103,7 +95,7 @@ export default function Home(){
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.3 }}>
-                <div className="w-full h-52 ">
+                <div className="w-full h-52">
                     <div className="w-4/5 h-48 mt-2 ml-2">
                         <div className="flex gap-2">
                             <div className="text-white font-inter font-bold text-3xl">Hi!!!</div>
@@ -142,8 +134,14 @@ export default function Home(){
                         </div>
                 </div>
                 <div className="w-[98%] h-1 bg-gray-500 rounded-xl flex mx-auto"></div>
-                <div className="w-full h-96 border-2 mt-5 flex">
-                    <div className="w-1/2 h-full border-2 flex flex-col items-center">
+                <div className="w-full min-h-screen mt-5 flex flex-col">
+                    <Profile/>
+                    
+                </div>
+                <div className="w-[98%] h-1 bg-gray-500 rounded-xl flex mx-auto mb-2"></div>
+
+                <div className="w-full h-96 mt-5 flex">
+                    <div className="w-1/2 h-full flex flex-col items-center">
                         <div className="text-[#FA812F] font-inter font-bold text-xl">Project Updated</div>
                         <div className="w-3/4 h-4/5 mt-5 outline outline-1 outline-gray-500 rounded-lg flex items-end">
                             <div className="w-full h1/4 p-2">
@@ -173,18 +171,25 @@ export default function Home(){
                             </div>    
                         </div>
                      </div>
-                    <div className="w-1/2 h-full border-2 flex flex-col items-center">
+                    <div className="w-1/2 h-full  flex flex-col items-center">
                         <div className="text-[#FA812F] font-inter font-bold text-xl">Last Activity</div>
                         <div className="w-3/4 h-4/5 outline outline-1 outline-gray-500 rounded-lg mt-5 flex justify-center items-center">
                         {!actloading?(
-                            <div className="w-3/4 h-4/5 border-2 text-white">
+                            <div className="w-full h-full flex justify-center items-center">
                                 {activity.map((item,index)=>(
-                                    <div key={index}>
-                                        <div>{item.name}</div>
-                                        <div>{item.activity.replace('T', ' ').replace('Z', '')}</div>
-                                        <div>{item.message}</div>
-                                        <div>{item.project}</div>
-
+                                    <div key={index} className="text-white flex flex-col text-center gap-5">
+                                        <div>
+                                            <div className="text-[#FA812F]">Project</div>
+                                            <div>{item.name}</div>
+                                        </div>
+                                        <div>
+                                            <div className="text-[#FA812F]">Date Time</div>
+                                            <div>{item.activity.replace('T', ' ').replace('Z', '')}</div>
+                                        </div>
+                                        <div>
+                                            <div className="text-[#FA812F]">Activity</div>
+                                            <div>{item.message}</div>
+                                        </div>
                                     </div>
                                 ))}  
                             </div>
@@ -206,11 +211,13 @@ export default function Home(){
                     }
                         </div>
                     </div>
-
                 </div>
+                <div className="w-[98%] h-1 bg-gray-500 rounded-xl flex mx-auto mb-2"></div>
+                <div className="w-full h-[500px]">
+                    <Form/>
+                </div>
+                <div className="w-[98%] h-1 bg-gray-500 rounded-xl flex mx-auto mb-2"></div>
             </motion.div>
-
-
             <div className="block lg:hidden">
                 <div className="w-11/12 h-80  mt-16 flex flex-col mx-auto items-center justify-center text-white">
                     <div className="flex gap-2">
