@@ -8,9 +8,9 @@ import { IoMdClose } from "react-icons/io";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-export default function Navbar(){
+export default function Navbar({menu,setMenu}){
     const pathname = usePathname();
-    const [menu,setMenu] = useState(false);
+    
 
     const NavbarItem = [
         {icon:<FaHome/>, name: 'Home', path:'/'},
@@ -36,10 +36,7 @@ export default function Navbar(){
                         </div>  
                     </div>
                 </div>
-                <div className="lg:hidden">
-                    {menu && (
-                        <div className="absolute inset-0 backdrop-blur-[1px] bg-black/20 z-10 pointer-events-none transition-all duration-300" />
-                    )}
+                <div className="lg:hidden relative">
                     <div className="fixed  w-full h-10  outline-1 outline-gray-500 flex justify-between">
                         <div className="text-white ml-3 text-3xl">Welcome</div>
                         <button className="text-white text-3xl mr-3"
@@ -50,9 +47,8 @@ export default function Navbar(){
                                 }}
                         ><IoMdMenu/></button>
                     </div>
-                </div>
-                {menu &&(
-                        <div className="absolute top-1/2 left-1/2 w-52 h-52 outline-1 outline-gray-500 bg-white rounded-xl transform -translate-x-1/2 -translate-y-1/2 z-30">
+                    {menu &&(
+                        <div className="fixed top-1/2 left-1/2 w-52 h-52 outline-1 outline-gray-500 bg-white rounded-xl transform -translate-x-1/2 -translate-y-1/2 z-30">
                             <div className="flex justify-end mr-2 text-3xl font-bold">
                                 <button
                                         onClick={(e)=>{
@@ -76,6 +72,8 @@ export default function Navbar(){
                             </div>
                         </div>
                     )}
+                </div>
+                
             </div>
     )
 }

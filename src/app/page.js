@@ -13,6 +13,7 @@ export default function Home(){
     const [loading,setLoading] = useState(false);
     const [actloading,setactLoading] = useState(false);
     
+    
 
     useEffect(()=>{
         const fetchRepos = async ()=>{
@@ -218,8 +219,12 @@ export default function Home(){
                 </div>
                 <div className="w-[98%] h-1 bg-gray-500 rounded-xl flex mx-auto mb-2"></div>
             </motion.div>
-            <div className="block lg:hidden">
-                <div className="w-11/12 h-80  mt-16 flex flex-col mx-auto items-center justify-center text-white">
+
+            <motion.div className="block lg:hidden"
+                         initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.3 }}>
+                <div className="w-11/12 h-auto  mt-16 flex flex-col mx-auto items-center justify-center text-white">
                     <div className="flex gap-2">
                                 <div className="text-white font-inter font-bold text-2xl">Hi!!!</div>
                                 <motion.span
@@ -253,13 +258,86 @@ export default function Home(){
                         <a href={item.link} target="_blank" className="buttonC" key={index}>{item.icon}</a>
                     )))}
                     </div>
-                <div className="w-full mt-8 h-1 bg-gray-500 rounded-xl flex mx-auto">
-                    
+                <div className="w-full mt-8 h-1 bg-gray-500 rounded-xl flex mx-auto"></div>
+                <Profile/>
+                <div className="w-full mt-14 h-1 bg-gray-500 rounded-xl flex mx-auto "></div>
+                    <div className="w-full h-96 mt-5 flex flex-col">
+                        <div className="w-full h-full flex flex-col items-center">
+                            <div className="text-[#FA812F] font-inter font-bold text-xl">Project Updated</div>
+                            <div className="w-3/4 h-4/5 mt-5 outline outline-1 outline-gray-500 rounded-lg flex items-end">
+                                <div className="w-full h1/4 p-2">
+                                {!loading ?(
+                                    <>
+                                    <div className="text-white font-inter font-bold text-3xl">{repos.name}</div>
+                                    <div className="text-[#FA812F] font-inter">{repos.language}</div>
+                                    <div className="flex w-full h-full justify-between ">
+                                        <div className="text-gray-500 font-inter">{DateUpdate}</div>
+                                        <div className={`w-24 h-6 justify-center flex rounded-md items-center outline outline-1 ${repos.topics === "onprogress" ? 'outline-green-500 text-green-500' : 'text-yellow-500 outline-yellow-500'} outline-gray-100 text-white`}>{repos.topics === "onprogress" ? 'Finish' : 'On Progress'}</div>
+                                    </div>
+                                    </>
+                                ) :(
+                                    <motion.div
+                                                style={{
+                                                    width: 50,
+                                                    height: 50,
+                                                    border: "5px solid #FA812F",
+                                                    borderTopColor: "transparent",
+                                                    borderRadius: "50%",
+                                                    margin: "auto",
+                                                }}
+                                                animate={{ rotate: 360 }}
+                                                transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+                                                />
+                                )}
+                                </div>    
+                            </div>
+                        </div>
+                    </div>
+                    <div className="w-full h-full flex flex-col items-center">
+                            <div className="text-[#FA812F] font-inter font-bold text-xl">Last Activity</div>
+                            <div className="w-3/4 h-72 outline outline-1 outline-gray-500 rounded-lg mt-5 flex justify-center items-center">
+                            {!actloading?(
+                                <div className="w-full h-full flex justify-center items-center">
+                                    {activity.map((item,index)=>(
+                                        <div key={index} className="text-white flex flex-col text-center gap-5">
+                                            <div>
+                                                <div className="text-[#FA812F]">Project</div>
+                                                <div>{item.name}</div>
+                                            </div>
+                                            <div>
+                                                <div className="text-[#FA812F]">Date Time</div>
+                                                <div>{item.activity.replace('T', ' ').replace('Z', '')}</div>
+                                            </div>
+                                            <div>
+                                                <div className="text-[#FA812F]">Activity</div>
+                                                <div>{item.message}</div>
+                                            </div>
+                                        </div>
+                                    ))}  
+                                </div>
+                            )
+                        :(
+                            <motion.div
+                                    style={{
+                                        width: 50,
+                                        height: 50,
+                                        border: "5px solid #FA812F",
+                                        borderTopColor: "transparent",
+                                        borderRadius: "50%",
+                                        margin: "auto",
+                                    }}
+                                    animate={{ rotate: 360 }}
+                                    transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+                                    />
+                        )
+                        }
+                            </div>
+                        </div>   
                 </div>
-                            
-                </div>
-                
-            </div>
+                <div className="w-full mt-8 h-1 bg-gray-500 rounded-xl flex mx-auto"></div>
+                <Form/>
+                <div className="w-full mt-8 h-1 bg-gray-500 rounded-xl flex mx-auto"></div>
+            </motion.div>
         </div>
     )
 }
