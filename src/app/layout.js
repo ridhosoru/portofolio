@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
           {menu && (
             <div className="absolute inset-0 backdrop-blur-[1px] bg-black/20 z-10 pointer-events-none transition-all duration-300" />
                     )}
-          <div className="lg:w-5/6 flex flex-1 lg:outline lg:outline-gray-500 lg:outline-1 w-full h-full">
+          <div className="lg:w-5/6 flex flex-1 lg:outline lg:outline-gray-500 lg:outline-1 w-full min-h-screen">
           {children}
           </div>
         </div>
