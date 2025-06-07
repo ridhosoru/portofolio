@@ -22,11 +22,11 @@ export default function Profile(){
                     <div className=" flex items-center justify-center h-11/12 w-11/12">
                     <div className="text-white font-inter text-center italic">
                         <span>
-                            "Ridho is a graduate of the Batam State Polytechnic majoring in Electrical Engineering with the Mechatronics Engineering Study Program.
+                            &quot;Ridho is a graduate of the Batam State Polytechnic majoring in Electrical Engineering with the Mechatronics Engineering Study Program.
                     He is very hardworking,ambitious and has a high level of creativity and has the ability to quickly adapt to a new environment so that he can work under pressure. 
                     Ridho has experience working as data analytic engineer in PT.Philips Industries Batam.During studies, 
                     in addition to diligently studying so as to maintain excellent grades, Ridho participated in several campus projects and also joined the campus press organization.
-                    Ridho has an interest in software development, microcontrollers, automation, electrical, and IOT, but he will always be open to learn something new."
+                    Ridho has an interest in software development, microcontrollers, automation, electrical, and IOT, but he will always be open to learn something new.&quot;
                         </span>
                     </div>
                 </div>
@@ -106,11 +106,11 @@ export default function Profile(){
                     <div className=" flex items-center justify-center h-11/12 w-11/12">
                     <div className="text-white font-inter text-center italic">
                         <span>
-                            "Ridho is a graduate of the Batam State Polytechnic majoring in Electrical Engineering with the Mechatronics Engineering Study Program.
+                            &quot;Ridho is a graduate of the Batam State Polytechnic majoring in Electrical Engineering with the Mechatronics Engineering Study Program.
                     He is very hardworking,ambitious and has a high level of creativity and has the ability to quickly adapt to a new environment so that he can work under pressure. 
                     Ridho has experience working as data analytic engineer in PT.Philips Industries Batam.During studies, 
                     in addition to diligently studying so as to maintain excellent grades, Ridho participated in several campus projects and also joined the campus press organization.
-                    Ridho has an interest in software development, microcontrollers, automation, electrical, and IOT, but he will always be open to learn something new."
+                    Ridho has an interest in software development, microcontrollers, automation, electrical, and IOT, but he will always be open to learn something new.&quot;
                         </span>
                     </div>
                 </div>

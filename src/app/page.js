@@ -115,11 +115,11 @@ export default function Home(){
                         </div>
                         
                         <div className="flex gap-2">
-                            <div className="text-white font-inter font-bold text-3xl">I'm</div>
+                            <div className="text-white font-inter font-bold text-3xl">I&apos;m</div>
                             <div className="text-[#FA812F] font-inter font-bold text-3xl">Yohanes Ridho Soru</div>
                         </div>
                         <div className="text-gray-500 font-inter">Batam,Riau Island - Indonesia</div>
-                        <div className="italic font-inter text-white">"An ordinary guy with an interest in the world of programming and electricity"</div>
+                        <div className="italic font-inter text-white">&quot;An ordinary guy with an interest in the world of programming and electricity&quot;</div>
                         <div className="mt-2 flex gap-5">
                             <button className="buttonD">Download CV</button>
                             <button className={`${contact ?'buttonC': 'buttonD'}`}
@@ -240,11 +240,11 @@ export default function Home(){
                                 >👋</motion.span>
                     </div>
                     <div className="flex gap-2">
-                            <div className="text-white font-inter font-bold text-2xl">I'm</div>
+                            <div className="text-white font-inter font-bold text-2xl">I&apos;m</div>
                             <div className="text-[#FA812F] font-inter font-bold text-2xl">Yohanes Ridho Soru</div>
                     </div>
                     <div className="text-gray-500 font-inter">Batam,Riau Island - Indonesia</div>
-                    <div className="italic font-inter text-white text-center">"An ordinary guy with an interest in the world of programming and electricity"</div>
+                    <div className="italic font-inter text-white text-center">&quot;An ordinary guy with an interest in the world of programming and electricity&quot;</div>
                     
                     <button className="buttonD mt-2">Download CV</button>
                     <div className="flex mt-2 gap-4">
