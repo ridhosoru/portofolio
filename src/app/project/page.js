@@ -103,7 +103,7 @@ const handleDetailClick = async (index) => {
                                         onClick={(e)=>{e.preventDefault(); setDetail(null)}}
                                     /> </button>
                                 </div>
-                                <div className="text-white">{readmes}</div>
+                                <div className="text-white">{JSON.stringify(readmes)}</div>
                                
                             </div>
                         )}
