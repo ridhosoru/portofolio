@@ -1,5 +1,5 @@
 'use client';
-import { FaHome,FaProjectDiagram  } from "react-icons/fa";
+import { FaHome,FaProjectDiagram,FaPython  } from "react-icons/fa";
 import { FiActivity } from "react-icons/fi";
 import { IoMdMenu } from "react-icons/io";
 import { useState } from "react";
@@ -16,6 +16,7 @@ export default function Navbar({menu,setMenu}){
         {icon:<FaHome/>, name: 'Home', path:'/'},
         {icon:<FaProjectDiagram/>, name: 'Project', path:'/project'},
         {icon:<FiActivity/>, name: 'Activity', path : '/activity'},
+        {icon:<FaPython/>, name: 'MTC App', path : '/maintenance-app'},
     ];
     return (
             <div className="lg:w-1/6 lg:h-full sm:w-full sm:h-20 ">
